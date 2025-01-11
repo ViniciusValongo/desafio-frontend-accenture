@@ -1,27 +1,35 @@
 package factory;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-
 public class WebDriverFactory {
 
-    public static WebDriver driver;
+    public static WebDriver getDriver(String browser) {
+        WebDriver driver;
 
-    public static WebDriver getDriver() {
-        if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new org.openqa.selenium.firefox.FirefoxDriver();
+                break;
+
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new org.openqa.selenium.edge.EdgeDriver();
+                break;
+
+            default:
+                throw new IllegalArgumentException("Navegador não suportado: " + browser);
         }
+
+        driver.manage().window().maximize();
         return driver;
-    }
-    public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
-
     }
 }
