@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 public class PracticeFormPage {
     private WebDriver driver;
-    Actions actions = new Actions(driver);
+
 
     @FindBy(css = PracticeFormAttributes.FIRST_NAME_INPUT)
     WebElement firstNameInput;
@@ -55,7 +55,7 @@ public class PracticeFormPage {
         genderMaleRadio.click();
         phoneInput.sendKeys("1234567890");
 
-
+        Actions actions = new Actions(driver);
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
