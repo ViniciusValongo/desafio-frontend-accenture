@@ -58,6 +58,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.5.3</version> <!-- Verifique a última versão no Maven Repository -->
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>

@@ -9,7 +9,7 @@ import pages.HomePage;
 import pages.SortablePage;
 
 public class SortableSteps {
-    private final WebDriver driver = WebDriverFactory.getDriver();
+    WebDriver driver = WebDriverFactory.getDriver("chrome");
     private final HomePage hp = new HomePage(driver);
     private final SortablePage sp = new SortablePage(driver);
 
