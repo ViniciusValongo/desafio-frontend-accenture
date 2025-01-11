@@ -11,7 +11,7 @@ import pages.PracticeFormPage;
 
 public class FormsSteps {
 
-    private final WebDriver driver = WebDriverFactory.getDriver();
+    WebDriver driver = WebDriverFactory.getDriver("chrome");
     private final HomePage homePage = new HomePage(driver);
     private final FormsPage formsPage = new FormsPage(driver);
     private final PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
@@ -46,7 +46,7 @@ public class FormsSteps {
     @Then("fecho o popup")
     public void fechoOPopup() {
         practiceFormPage.closePopup();
-        WebDriverFactory.quitDriver();
+        driver.quit();
     }
 
 

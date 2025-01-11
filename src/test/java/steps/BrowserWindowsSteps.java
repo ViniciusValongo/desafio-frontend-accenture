@@ -12,7 +12,7 @@ import pages.HomePage;
 import pages.NewWindowsPage;
 
 public class BrowserWindowsSteps {
-    private final WebDriver driver = WebDriverFactory.getDriver();
+    WebDriver driver = WebDriverFactory.getDriver("chrome");
     private final HomePage hp = new HomePage(driver);
     private final BrowserWindowsPage bw = new BrowserWindowsPage(driver);
     private final AlertFrameWindowsPage afw = new AlertFrameWindowsPage(driver);
@@ -49,7 +49,7 @@ public class BrowserWindowsSteps {
 
     @Then("fecho a nova janela")
     public void fechoANovaJanela() {
-        WebDriverFactory.quitDriver();
+        driver.quit();
     }
 
 }
