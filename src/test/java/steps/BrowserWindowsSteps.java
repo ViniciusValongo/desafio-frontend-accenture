@@ -2,6 +2,7 @@ package steps;
 
 import factory.WebDriverFactory;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,10 @@ public class BrowserWindowsSteps {
     private final AlertFrameWindowsPage afw = new AlertFrameWindowsPage(driver);
     private final NewWindowsPage nwp = new NewWindowsPage(driver);
 
-
+    @Given("entro na página inicial do site DemoQA")
+    public void queEstouNaPaginaInicialDoSiteDemoQA() {
+        driver.get("https://demoqa.com/");
+    }
     @And("escolho a opção alerts, frames e windowns")
     public void escolhoAOpcaoAlertsFramesEWindowns() {
         hp.clickAlertFramesEWindowsMenu();
@@ -45,7 +49,7 @@ public class BrowserWindowsSteps {
 
     @Then("fecho a nova janela")
     public void fechoANovaJanela() {
-        driver.quit();
+        WebDriverFactory.quitDriver();
     }
 
 }
