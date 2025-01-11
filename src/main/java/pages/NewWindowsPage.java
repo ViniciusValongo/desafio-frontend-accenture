@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NewWindowsPage {
 
-    WebDriver driver;
+    private WebDriver driver;
     public NewWindowsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -12,7 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.nio.file.Paths;
 
 public class PracticeFormPage {
-    WebDriver driver;
+    private WebDriver driver;
+    Actions actions = new Actions(driver);
 
     @FindBy(css = PracticeFormAttributes.FIRST_NAME_INPUT)
     WebElement firstNameInput;
@@ -29,26 +30,12 @@ public class PracticeFormPage {
     @FindBy(css = PracticeFormAttributes.PHONE_INPUT)
     WebElement phoneInput;
 
-    @FindBy(css = PracticeFormAttributes.BIRTH_DATE_INPUT)
-    WebElement birthDateInput;
-
-    @FindBy(css = PracticeFormAttributes.SUBJECT_INPUT)
-    WebElement subjectInput;
-
-    @FindBy(css = PracticeFormAttributes.HOBBY_SPORT_CHECKBOX)
-    WebElement hobbySportCheckbox;
 
     @FindBy(css = PracticeFormAttributes.FILE_UPLOAD_INPUT)
     WebElement fileUploadInput;
 
     @FindBy(css = PracticeFormAttributes.CURRENT_ADDRESS_INPUT)
     WebElement currentAddressInput;
-
-    @FindBy(css = PracticeFormAttributes.STATE_DROPDOWN)
-    WebElement stateDropdown;
-
-    @FindBy(css = PracticeFormAttributes.CITY_DROPDOWN)
-    WebElement cityDropdown;
 
     @FindBy(css = PracticeFormAttributes.SUBMIT_BUTTON)
     WebElement submitButton;
@@ -68,31 +55,18 @@ public class PracticeFormPage {
         genderMaleRadio.click();
         phoneInput.sendKeys("1234567890");
 
-        // Birth Date in MM/DD/YYYY format
-//        birthDateInput.sendKeys("01/01/2000");
 
-        Actions actions = new Actions(driver);
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        // Random subject
-//        subjectInput.sendKeys("Maths");
-//        actions.sendKeys(Keys.ENTER);
 
-//        hobbySportCheckbox.click();
         String relativePath = "src/test/resources/uploads/testfile.txt";
-
-        // Converte para caminho absoluto
         String absolutePath = Paths.get(relativePath).toAbsolutePath().toString();
-
-
-        // File upload (make sure the test file is placed in the right folder)
         fileUploadInput.sendKeys(absolutePath);
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         currentAddressInput.sendKeys("123 Main St, Anytown, USA");
 
-//        stateDropdown.sendKeys("NCR");
-//        cityDropdown.sendKeys("Delhi");
     }
 
     public void submitForm() {

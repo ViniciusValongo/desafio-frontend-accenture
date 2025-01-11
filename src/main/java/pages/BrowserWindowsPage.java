@@ -1,6 +1,5 @@
 package pages;
 
-import attributes.AlertFrameWindowsAttributes;
 import attributes.BrowserWindowsAttributes;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BrowserWindowsPage {
 
-    WebDriver driver;
+    private WebDriver driver;
     public BrowserWindowsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

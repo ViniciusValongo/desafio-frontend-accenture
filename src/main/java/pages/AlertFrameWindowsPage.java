@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AlertFrameWindowsPage {
 
-    WebDriver driver;
+    private WebDriver driver;
     public AlertFrameWindowsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -20,25 +20,5 @@ public class AlertFrameWindowsPage {
     public void clickBrowserWindows() {
         browserWindowns.click();
     }
-
-
-
-
-
-
-
-
-//    AlertFrameWindowsAttributes afw = new AlertFrameWindowsAttributes();
-//
-//    private WebDriver driver;
-//
-//    public AlertFrameWindowsPage(WebDriver driver) {
-//        this.driver = driver;
-//        PageFactory.initElements(driver, afw);
-//    }
-//
-//    public void clicarSubMenuBrowserWindows(){
-//        afw.getBrowserWindows().click();
-//    }
 
 }
