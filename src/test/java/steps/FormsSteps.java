@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import pages.FormsPage;
 import pages.HomePage;
 import pages.PracticeFormPage;
-import pages.PageObject;
 
 public class FormsSteps {
 
@@ -17,7 +16,11 @@ public class FormsSteps {
     private final FormsPage formsPage = new FormsPage(driver);
     private final PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
 
-    private final PageObject pg = new PageObject(driver);
+
+    @Given("logo na página inicial do site DemoQA")
+    public void queEstouNaPaginaInicialDoSiteDemoQA() {
+        driver.get("https://demoqa.com/");
+    }
 
     @When("eu navego até o submenu Practice Form em Forms")
     public void euNavegoAteOSubmenuPracticeFormEmForms() {
@@ -43,7 +46,7 @@ public class FormsSteps {
     @Then("fecho o popup")
     public void fechoOPopup() {
         practiceFormPage.closePopup();
-        driver.quit();
+        WebDriverFactory.quitDriver();
     }
 
 

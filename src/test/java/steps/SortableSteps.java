@@ -1,7 +1,6 @@
 package steps;
 
 import factory.WebDriverFactory;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,27 +9,25 @@ import pages.HomePage;
 import pages.SortablePage;
 
 public class SortableSteps {
-    WebDriver driver;
-    HomePage homePage;
-    SortablePage sortablePage;
+    private final WebDriver driver = WebDriverFactory.getDriver();
+    private final HomePage hp = new HomePage(driver);
+    private final SortablePage sp = new SortablePage(driver);
 
     @Given("que estou na página inicial do site DemoQA")
     public void queEstouNaPaginaInicialDoSiteDemoQA() {
-        driver = WebDriverFactory.getDriver();
         driver.get("https://demoqa.com/");
-        homePage = new HomePage(driver);
     }
 
     @When("eu navego até o submenu Sortable em Interactions")
     public void euNavegoAteOSubmenuSortableEmInteractions() {
-        sortablePage = new SortablePage(driver);
-        sortablePage.clickSortableSubmenu();
+        hp.clickInteractionsMenu();
+        sp.clickSortableSubmenu();
     }
 
     @Then("eu organizo os elementos na lista em ordem crescente")
-    public void euOrganizoOsElementosNaListaEmOrdemCrescente() throws InterruptedException {
-        sortablePage.reorderListInAscendingOrder();
-        WebDriverFactory.quitDriver();
+    public void euOrganizoOsElementosNaListaEmOrdemCrescente() {
+        sp.reorderListInAscendingOrder();
+
     }
 
 
